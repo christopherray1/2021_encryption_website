@@ -1,5 +1,2 @@
-.column {
-  float: left;
-  width: 40%;
-  text-align: center;
-}
+body    { padding-top:50px; }
+.container .jumbotron    { border-radius:40px; }

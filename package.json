@@ -1,0 +1,12 @@
+{
+  "name": "2021_encryption_website",
+  "description": "Our encryption website for Capstone",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ejs": "~1.0.0",
+    "express": "~4.9.8"
+  }
+}
