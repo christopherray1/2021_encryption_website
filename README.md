@@ -54,4 +54,17 @@ Set up dependencies
 #### 5. Setup index.ejs with basic html template and import our css
 
 
-#### 6. Setup our styles.css to test if css works
+#### 6. Setup heroku app
+Login to heroku through command line/git bash
+
+navigate to root project folder and enter "heroku create" to create a new app with this project
+
+then use "git heroku push main" to try and push project to heroku main repoistory, if this does not work then we will have to "git add"
+all modified files and then commit them to heroku main.
+
+Test to see if our work has been pushed with "heroku open"
+
+If successful, then push to git repository
+
+
+#### 7. Setup our styles.css to test if css works
