@@ -11,35 +11,62 @@
     <!-- <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="../public/css/styles.css">
 
-</head>
-<body>
-
+  </head>
+  <body>
     <div id="wrapper">
-        <h1>Encryption Project</h1>
-
+      <h1>Encryption Project</h1>
+  
+      <div class="caesarNav">
+        <h2>Caesar Cipher</h2>
+  
         <div class="column" style="border: 1px solid black;">
           <h2>Clear Text</h2>
           <textarea class="enterText">Enter text</textarea>
-        
         </div>
-    
-        
     
         <div class="column" style="border: 1px solid black;">
           <h2>Encrypted Text</h2>
-          <textarea readonly>Output text (cannot edit)</textarea>
-        
+          <textarea readonly class="encryptedText">Output text (cannot edit)</textarea>    
+        </div>
+      </div>
+  
+      <div class="polybiusNav">
+        <h2>Polybius Cipher</h2>
+  
+        <div class="column" style="border: 1px solid black;">
+          <h2>Clear Text</h2>
+          <textarea class="enterText">Enter text</textarea>
         </div>
     
-        <div class="button-area">
-          <button class="submit" onclick="">Submit Text</button>
+        <div class="column" style="border: 1px solid black;">
+          <h2>Encrypted Text</h2>
+          <textarea readonly class="encryptedText">Output text (cannot edit)</textarea>    
         </div>
-        
+      </div>
+  
+      <div class="atbashNav">
+        <h2>Atbash Cipher</h2>
+  
+        <div class="column" style="border: 1px solid black;">
+          <h2>Clear Text</h2>
+          <textarea class="enterText">Enter text</textarea>
+        </div>
     
-        
-    
-    
-    
+        <div class="column" style="border: 1px solid black;">
+          <h2>Encrypted Text</h2>
+          <textarea readonly class="encryptedText">Output text (cannot edit)</textarea>    
+        </div>
+      </div>
+  
+      <div class="button-area">
+        <button class="submit" onclick="">Submit Text</button>
+      </div> 
+  
+    </div><!--End Wrapper Div-->
+  
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/slidePanes.js"></script>
     
       </div><!--End Wrapper Div-->
 
@@ -47,3 +74,5 @@
 
 </body>
 </html>
+  </body>
+  </html>
