@@ -21,15 +21,15 @@
   
         <div class="column" style="border: 1px solid black;">
           <h2>Clear Text</h2>
-          <textarea id="inputText">Enter text</textarea>
+          <textarea id="caesarInputText">Enter text</textarea>
         </div>
     
         <div class="column" style="border: 1px solid black;">
           <h2>Encrypted Text</h2>
-          <textarea id="outputText" readonly class="encryptedText">Output text (cannot edit)</textarea>    
+          <textarea id="caesarOutputText" readonly class="encryptedText">Output text (cannot edit)</textarea>    
         </div>
 
-        <button class="submit" onclick="encrypt()">Submit Text</button>
+        <button class="submit" onclick="caesarEncrypt()">Submit Text</button>
       </div>
   
       <div class="polybiusNav">
@@ -37,13 +37,15 @@
   
         <div class="column" style="border: 1px solid black;">
           <h2>Clear Text</h2>
-          <textarea class="enterText">Enter text</textarea>
+          <textarea id="polybiusInputText">Enter text</textarea>
         </div>
     
         <div class="column" style="border: 1px solid black;">
           <h2>Encrypted Text</h2>
-          <textarea readonly class="encryptedText">Output text (cannot edit)</textarea>    
+          <textarea id="polybiusOutputText" readonly class="encryptedText">Output text (cannot edit)</textarea>    
         </div>
+
+        <button class="submit" onclick="polybiusEncrypt()">Submit Text</button>
       </div>
   
       <div class="atbashNav">
