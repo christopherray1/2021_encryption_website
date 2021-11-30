@@ -7,21 +7,21 @@ $(function() {
   $polybiusNav.hide();
   $atbashNav.hide();
 
-  $('div.caesarNav').show();
-  $('div.polybiusNav').show();
-  $('div.atbashNav').show();
+  $caesarNav.show();
+  $polybiusNav.show();
+  $atbashNav.show();
 
-  $('div.caesarNav h2').css('cursor', 'pointer')
+  $('div.caesarNav > h2').css('cursor', 'pointer')
                                      .click(function() {
                                        $('div.caesarNav div').slideToggle('slow', 'easeOutCubic');
                                      });
 
-  $('div.polybiusNav h2').css('cursor', 'pointer')
+  $('div.polybiusNav > h2').css('cursor', 'pointer')
                                      .click(function() {
                                        $('div.polybiusNav div').slideToggle('slow', 'easeOutCubic');
                                      });
 
-  $('div.atbashNav h2').css('cursor', 'pointer')
+  $('div.atbashNav > h2').css('cursor', 'pointer')
                                      .click(function() {
                                        $('div.atbashNav div').slideToggle('slow', 'easeOutCubic');
                                      });

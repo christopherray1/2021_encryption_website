@@ -1,5 +1,113 @@
+/**********************************************************/
+/************** Media Query For Desktop ***************/
+/**********************************************************/
+h1 {
+  color: white;
+}
+
+body {
+  background: #222;
+  color: #ccc;
+  text-align: center;
+}
+
 .column {
   display: inline-block;
   width: 40%;
   text-align: center;
+  border: 1px solid white;
+  background: rgb(20, 20, 20);
+}
+
+.column h2 {
+  color: white;
+}
+
+
+.caesarNav > h2 {
+  width: 155px;
+}
+
+.caesarNav > h2:hover {
+  color: white;
+}
+
+.polybiusNav> h2 {
+  width: 175px; 
+
+}
+
+.polybiusNav> h2:hover {
+  color: white;
+
+}
+
+.atbashNav > h2 {
+  width: 155px; 
+
+}
+
+.atbashNav > h2:hover {
+  color: white;
+
+}
+
+.info {
+  color: #00FFFF 
+}
+
+.buttonArea {
+  margin-right: 72%;
+}
+
+
+
+
+/*********************************************************/
+/**************** Media Query For Tablet *****************/
+/*********************************************************/
+@media only screen and (max-width: 64em) {
+
+  .column {
+    display: block;
+    width: 70%;
+  }
+
+  .submit {
+    /*padding: top right bottom left */
+    padding: 10px 100px 10px 100px;
+  }
+
+  .buttonArea {
+    margin-right: 30%;
+  }
+
+}
+
+
+/**********************************************************/
+/************** Media Query For Smartphones ***************/
+/**********************************************************/
+@media only screen and (max-width: 37.5em) {
+  
+  #wrapper {
+    padding-left: 30px;
+  }
+  
+  
+  .column {
+    display: block;
+    width: 50%;
+    padding: 15px 100px 25px;
+  }
+  
+  .column textarea {
+    padding: 25px 20px 15px;
+    text-align: center;
+  }
+
+  .buttonArea {
+    margin-right: 0;
+  }
+
 }

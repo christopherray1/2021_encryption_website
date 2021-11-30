@@ -19,60 +19,64 @@
       <div class="caesarNav">
         <h2>Caesar Cipher</h2>
   
-        <div class="column" style="border: 1px solid black;">
+        <div class="column">
           <h2>Clear Text</h2>
           <textarea id="caesarInputText">Enter text</textarea>
         </div>
     
-        <div class="column" style="border: 1px solid black;">
+        <div class="column">
           <h2>Encrypted Text</h2>
           <textarea id="caesarOutputText" readonly class="encryptedText">Output text (cannot edit)</textarea>    
         </div>
 
-        <button class="submit" onclick="caesarEncrypt()">Submit Text</button>
-      </div>
+        <div class="buttonArea">
+          <button class="submit" onclick="caesarEncrypt()">Submit Text</button>
+        </div>
+        
+      </div> <!--End Caesar Div-->
   
       <div class="polybiusNav">
         <h2>Polybius Cipher</h2>
   
-        <div class="column" style="border: 1px solid black;">
+        <div class="column">
           <h2>Clear Text</h2>
           <textarea id="polybiusInputText">Enter text</textarea>
         </div>
     
-        <div class="column" style="border: 1px solid black;">
+        <div class="column">
           <h2>Encrypted Text</h2>
           <textarea id="polybiusOutputText" readonly class="encryptedText">Output text (cannot edit)</textarea>    
         </div>
 
-        <button class="submit" onclick="polybiusEncrypt()">Submit Text</button>
-      </div>
+        <div class="buttonArea">
+          <button class="submit" onclick="polybiusEncrypt()">Submit Text</button>
+        </div>
+
+      </div> <!--End polybius Div-->
   
       <div class="atbashNav">
         <h2>Atbash Cipher</h2>
   
-        <div class="column" style="border: 1px solid black;">
+        <div class="column">
           <h2>Clear Text</h2>
           <textarea class="enterText">Enter text</textarea>
         </div>
     
-        <div class="column" style="border: 1px solid black;">
+        <div class="column">
           <h2>Encrypted Text</h2>
           <textarea readonly class="encryptedText">Output text (cannot edit)</textarea>    
         </div>
-      </div>
+        
+      </div> <!--End atBash Div-->
   
     </div><!--End Wrapper Div-->
 
-    <a href="/info">Learn more about the ciphers here!</a>
+    <a class="info" href="/info">Learn more about the ciphers here!</a>
   
     <script src="js/jquery-3.6.0.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/slidePanes.js"></script>
     <script src="js/encrypt.js"></script>
-    
-
-      
 
 </body>
 </html>
