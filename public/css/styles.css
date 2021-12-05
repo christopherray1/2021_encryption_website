@@ -1,5 +1,5 @@
 /**********************************************************/
-/************** Media Query For Desktop ***************/
+/**************** Media Query For Desktop *****************/
 /**********************************************************/
 h1 {
   color: white;
@@ -22,7 +22,6 @@ body {
 .column h2 {
   color: white;
 }
-
 
 .caesarNav > h2 {
   width: 155px;
@@ -60,6 +59,41 @@ body {
   margin-right: 72%;
 }
 
+/*********************************************************/
+/******************* Navigation Setup ********************/
+/*********************************************************/
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
 
 
 
@@ -109,5 +143,26 @@ body {
   .buttonArea {
     margin-right: 0;
   }
+
+  /*********************************************************/
+/******************* Navigation Setup ********************/
+/*********************************************************/
+ul {
+  width: 397px;
+  background-color: #333;
+  border: 1px solid #bbb;
+}
+
+li {
+  float: none;
+  text-align: center;
+  border-right: none;
+  border-bottom: 1px solid #bbb;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
 
 }
