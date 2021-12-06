@@ -21,7 +21,7 @@
     <h2>Caesar Cipher</h2>
 
     <div class="column" style="border: 1px solid black;">
-      <h2>Encrypted Text</h2>
+      <h2>Decrypted Text</h2>
       <textarea id="inputCeasarDecrypt">Enter text</textarea>
     </div>
 
@@ -31,6 +31,22 @@
     </div>
 
     <button class="submit" onclick="caesarDecrypt()">Submit Text</button>
+  </div>
+
+  <div class="polybiusNav">
+    <h2>Polybius Cipher</h2>
+
+    <div class="column" style="border: 1px solid black;">
+      <h2>Decrypted Text</h2>
+      <textarea id="inputPolybiusDecrypt">Enter text</textarea>
+    </div>
+
+    <div class="column" style="border: 1px solid black;">
+      <h2>Clear Text</h2>
+      <textarea id="outputPolybiusDecrypt" readonly class="encryptedText">Output text (cannot edit)</textarea>    
+    </div>
+
+    <button class="submit" onclick="polybiusDecrypt()">Submit Text</button>
   </div>
   
 </div>
