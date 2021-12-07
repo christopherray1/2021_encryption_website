@@ -7,6 +7,9 @@ var polybiusSquareRowValues = {"a": 1, "b": 1, "c": 1, "d": 1, "e": 1, "f": 2, "
 var polybiusSquareColumnValues = {"a": 1, "b": 2, "c": 3, "d": 4, "e": 5, "f": 1, "g": 2, "h": 3, "i": 4, "j": 5, "k": 1, "l": 2, "m": 3, "n": 4,
                                  "o": 5, "p": 1, "q": 2, "r": 3, "s": 4, "t": 5, "u": 1, "v": 2, "w": 3, "x": 4, "z": 5};
 
+var atBashValues = {"z":"a", "y":"b", "x":"c", "w":"d", "v":"e", "u":"f", "t":"g", "s":"h", "r":"i", "q":"j", "p":"k",
+                       "o":"l", "n":"m", "m":"n", "l":"o", "k":"p", "j":"q", "i":"r", "h":"s", "g":"t", "f":"u", "e":"v", "d":"w", "c":"x", "b":"y", "a":"z", " ":" "};
+
 function caesarEncrypt() {
 
     var textToEncrypt = [];  // Array to pass words/word to, to encrypt
@@ -86,5 +89,35 @@ function polybiusEncrypt() {
         }
 
     }
+
+}
+
+function atBashEncrypt() {
+
+    var textToEncrypt = (document.querySelector("#atBashInputText").value).toLowerCase(); // grab input text and cast to lower case
+    var outputTextBox = document.querySelector("#atBashOutputText"); // grab output text box
+    var encryptedText = ""; // setup our output message
+    
+    if (!(/^[a-zA-Z\s]*$/.test(textToEncrypt))) { // Checks to see if you entered something that wasnt a letter or a space.
+
+        encryptedText = "Please only use letters.";
+
+    } else { // The else goes on with the rest of the program
+
+    for (var i =0; i < textToEncrypt.length; i++) { // Step through each letter in the input text
+        
+        
+            
+            encryptedText += atBashValues[textToEncrypt[i]];
+
+        
+        
+    }
+
+}
+
+    
+
+    outputTextBox.innerHTML = encryptedText;
 
 }

@@ -16,7 +16,7 @@ var originalAlphabet = {0:"a", 1:"b", 2:"c", 3:"d", 4:"e", 5:"f", 6:"g", 7:"h", 
 // Kept these here for my own reference I wasnt quite sure if I understood how this cypher worked.
 
 var polybiusSquareReverseKey = { 11 : "a" , 12 : "b", 13 : "c", 14 : "d", 15 : "e", 21 : "f", 22 : "g",23 : "h", 24 : "i", 25 : "j", 31 : "k", 32 : "l", 33 : "m", 
-                                 34 : "n", 35 : "o", 41 : "p", 42 : "q", 43 : "r", 44 : "s", 45 : "t", 51 : "u", 52 : "v", 53 : "w", 54 : "x", 55 : "y", 61 : "z"}; 
+                                 34 : "n", 35 : "o", 41 : "p", 42 : "q", 43 : "r", 44 : "s", 45 : "t", 51 : "u", 52 : "v", 53 : "w", 54 : "x", 55 : "z"}; 
                                  // This is the number pair of each of the letters for this method of encryption
 
 function caesarDecrypt() {
