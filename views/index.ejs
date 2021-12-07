@@ -27,16 +27,12 @@
   
         <div class="column">
           <h2>Clear Text</h2>
-          <textarea id="caesarInputText" placeholder="Enter text"></textarea>
+          <textarea onkeyup="caesarEncrypt()" id="caesarInputText" placeholder="Enter text"></textarea>
         </div>
     
         <div class="column">
           <h2>Encrypted Text</h2>
           <textarea id="caesarOutputText" readonly class="encryptedText" placeholder="hqwhu whaw"></textarea>    
-        </div>
-
-        <div class="buttonArea">
-          <button class="submit" onclick="caesarEncrypt()">Submit Text</button>
         </div>
         
       </div> <!--End Caesar Div-->
@@ -46,7 +42,7 @@
   
         <div class="column">
           <h2>Clear Text</h2>
-          <textarea id="polybiusInputText" placeholder="Enter text"></textarea>
+          <textarea onkeyup="polybiusEncrypt()" id="polybiusInputText" placeholder="Enter text"></textarea>
         </div>
     
         <div class="column">
@@ -54,9 +50,6 @@
           <textarea id="polybiusOutputText" readonly class="encryptedText" placeholder="153445154345155445"></textarea>    
         </div>
 
-        <div class="buttonArea">
-          <button class="submit" onclick="polybiusEncrypt()">Submit Text</button>
-        </div>
 
       </div> <!--End polybius Div-->
   
@@ -65,16 +58,12 @@
   
         <div class="column">
           <h2>Clear Text</h2>
-          <textarea id="atBashInputText" class="enterText" placeholder="Enter text"></textarea>
+          <textarea onkeyup="atbashEncrypt()" id="atbashInputText" class="enterText" placeholder="Enter text"></textarea>
         </div>
     
         <div class="column">
           <h2>Encrypted Text</h2>
-          <textarea id="atBashOutputText" readonly class="encryptedText" placeholder="Output text (cannot edit)"></textarea>    
-        </div>
-
-        <div class="buttonArea">
-          <button class="submit" onclick="atBashEncrypt()">Submit Text</button>
+          <textarea id="atbashOutputText" readonly class="encryptedText" placeholder="vmgvi gvcg"></textarea>    
         </div>
         
       </div> <!--End atBash Div-->
@@ -88,4 +77,3 @@
 
 </body>
 </html>
-

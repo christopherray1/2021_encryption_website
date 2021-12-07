@@ -7,8 +7,8 @@ var polybiusSquareRowValues = {"a": 1, "b": 1, "c": 1, "d": 1, "e": 1, "f": 2, "
 var polybiusSquareColumnValues = {"a": 1, "b": 2, "c": 3, "d": 4, "e": 5, "f": 1, "g": 2, "h": 3, "i": 4, "j": 5, "k": 1, "l": 2, "m": 3, "n": 4,
                                  "o": 5, "p": 1, "q": 2, "r": 3, "s": 4, "t": 5, "u": 1, "v": 2, "w": 3, "x": 4, "z": 5};
 
-var atBashValues = {"z":"a", "y":"b", "x":"c", "w":"d", "v":"e", "u":"f", "t":"g", "s":"h", "r":"i", "q":"j", "p":"k",
-                       "o":"l", "n":"m", "m":"n", "l":"o", "k":"p", "j":"q", "i":"r", "h":"s", "g":"t", "f":"u", "e":"v", "d":"w", "c":"x", "b":"y", "a":"z", " ":" "};
+// var atBashValues = {"z":"a", "y":"b", "x":"c", "w":"d", "v":"e", "u":"f", "t":"g", "s":"h", "r":"i", "q":"j", "p":"k",
+//                        "o":"l", "n":"m", "m":"n", "l":"o", "k":"p", "j":"q", "i":"r", "h":"s", "g":"t", "f":"u", "e":"v", "d":"w", "c":"x", "b":"y", "a":"z", " ":" "};
 
 function caesarEncrypt() {
 
@@ -92,32 +92,84 @@ function polybiusEncrypt() {
 
 }
 
-function atBashEncrypt() {
+// function atBashEncrypt() {
 
-    var textToEncrypt = (document.querySelector("#atBashInputText").value).toLowerCase(); // grab input text and cast to lower case
-    var outputTextBox = document.querySelector("#atBashOutputText"); // grab output text box
-    var encryptedText = ""; // setup our output message
+//     var textToEncrypt = (document.querySelector("#atBashInputText").value).toLowerCase(); // grab input text and cast to lower case
+//     var outputTextBox = document.querySelector("#atBashOutputText"); // grab output text box
+//     var encryptedText = ""; // setup our output message
     
-    if (!(/^[a-zA-Z\s]*$/.test(textToEncrypt))) { // Checks to see if you entered something that wasnt a letter or a space.
+//     if (!(/^[a-zA-Z\s]*$/.test(textToEncrypt))) { // Checks to see if you entered something that wasnt a letter or a space.
 
-        encryptedText = "Please only use letters.";
+//         encryptedText = "Please only use letters.";
 
-    } else { // The else goes on with the rest of the program
+//     } else { // The else goes on with the rest of the program
 
-    for (var i =0; i < textToEncrypt.length; i++) { // Step through each letter in the input text
+//     for (var i =0; i < textToEncrypt.length; i++) { // Step through each letter in the input text
         
         
             
-            encryptedText += atBashValues[textToEncrypt[i]];
+//             encryptedText += atBashValues[textToEncrypt[i]];
 
         
         
-    }
+//     }
 
-}
+// }
 
     
 
-    outputTextBox.innerHTML = encryptedText;
+//     outputTextBox.innerHTML = encryptedText;
+
+// }
+
+function atbashEncrypt() {
+
+    var textToEncrypt = [];  // Array to pass words/word to, to encrypt
+
+    var inputText = document.querySelector("#atbashInputText").value;  // grab the input text
+
+    var enteredText = String(inputText).toLowerCase(); // Convert inputText to lowercase
+    textToEncrypt = enteredText.split(" "); // split up input text by space and pass to empty array textToEncrypt
+    
+    
+    var outputText = document.querySelector("#atbashOutputText"); // Select our output text box
+
+
+    var encryptedText = ""; // our encrypted text will go here
+    
+    textToEncrypt.forEach(word => {  // Step through our textToEncrypt array
+        
+        for (var i = 0; i < word.length; i++) {  // Step through each letter of our word in our for each loop
+
+            if (Number.isInteger(parseInt(word[i]))) { // Catch user entering a number into input box
+                encryptedText = "You can not encrypt numbers with Atbash Encryption. Please Retype your phrase.";
+                break;
+            } else if ((/[a-z]/).test(word[i])) {  // check if current char of the word(s) is a letter
+
+                for (let key of Object.keys(originalAlphabet)) { // Step through each key in our originalAlphabet associative array and compare to the current letter we are checking in the word,
+                                                                // then add the new letter to our encryptedText output message
+                    if (originalAlphabet[key] == word[i]) {
+                        if (parseInt(key) <= 12) {         // If the current key that was grabbed from the checked letter in our word is <= 12, this means it is on the first half of alphabet
+                            encryptedText += originalAlphabet[(0 - parseInt(key)) + 25]; // So we take the key value and subtract it from zero and add 25 to it to get our letter. (Ex. 0 - 3 = -3 + 25 = 22....Which would be d turns into w)
+                        } else if (parseInt(key) > 12 && parseInt(key) <= 25) { // If key is greater than 12 and less than or equal to 25 it is on the second half of the alphabet
+                            encryptedText += originalAlphabet[Math.abs(parseInt(key) - 25)]; // So we take the absolute value of the key - 25. (Ex. 21-25 = -4 absolute value is 4.... which would be v turns into e)
+                        }
+                        
+                    }
+                }
+
+            } else { // Catch any other type of symbol or character that is not a letter.
+                encryptedText = "You may only enter letters from the alphabet to encrypt.";
+                break;
+            }
+            
+        }
+        encryptedText += " "; // add a space at the end of the word, incase there are multiple words
+
+    });
+    
+    outputText.innerHTML = encryptedText; // Set our output test box equal to our encrypted text
+
 
 }
+
