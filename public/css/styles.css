@@ -5,6 +5,14 @@ h1 {
   color: white;
 }
 
+img {
+  margin-right: 29rem;
+  margin-top: -70px;
+  float: right;
+  width: 75px;
+  height: auto;
+}
+
 body {
   background: #222;
   color: #ccc;
@@ -31,28 +39,24 @@ body {
   color: white;
 }
 
-.polybiusNav> h2 {
-  width: 175px; 
-
+.polybiusNav > h2 {
+  width: 175px;
 }
 
-.polybiusNav> h2:hover {
+.polybiusNav > h2:hover {
   color: white;
-
 }
 
 .atbashNav > h2 {
-  width: 155px; 
-
+  width: 155px;
 }
 
 .atbashNav > h2:hover {
   color: white;
-
 }
 
 .info {
-  color: #00FFFF 
+  color: #00ffff;
 }
 
 .buttonArea {
@@ -72,7 +76,7 @@ ul {
 
 li {
   float: left;
-  border-right:1px solid #bbb;
+  border-right: 1px solid #bbb;
 }
 
 li:last-child {
@@ -92,16 +96,13 @@ li a:hover:not(.active) {
 }
 
 .active {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
 }
-
-
 
 /*********************************************************/
 /**************** Media Query For Tablet *****************/
 /*********************************************************/
 @media only screen and (max-width: 64em) {
-
   .column {
     display: block;
     width: 70%;
@@ -115,26 +116,22 @@ li a:hover:not(.active) {
   .buttonArea {
     margin-right: 30%;
   }
-
 }
-
 
 /**********************************************************/
 /************** Media Query For Smartphones ***************/
 /**********************************************************/
 @media only screen and (max-width: 37.5em) {
-  
   #wrapper {
     padding-left: 30px;
   }
-  
-  
+
   .column {
     display: block;
     width: 50%;
     padding: 15px 100px 25px;
   }
-  
+
   .column textarea {
     padding: 25px 20px 15px;
     text-align: center;
@@ -145,24 +142,22 @@ li a:hover:not(.active) {
   }
 
   /*********************************************************/
-/******************* Navigation Setup ********************/
-/*********************************************************/
-ul {
-  width: 397px;
-  background-color: #333;
-  border: 1px solid #bbb;
-}
+  /******************* Navigation Setup ********************/
+  /*********************************************************/
+  ul {
+    width: 397px;
+    background-color: #333;
+    border: 1px solid #bbb;
+  }
 
-li {
-  float: none;
-  text-align: center;
-  border-right: none;
-  border-bottom: 1px solid #bbb;
-}
+  li {
+    float: none;
+    text-align: center;
+    border-right: none;
+    border-bottom: 1px solid #bbb;
+  }
 
-li:last-child {
-  border-bottom: none;
-}
-
-
+  li:last-child {
+    border-bottom: none;
+  }
 }
