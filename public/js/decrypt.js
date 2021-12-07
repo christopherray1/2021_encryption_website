@@ -19,6 +19,9 @@ var polybiusSquareReverseKey = { 11 : "a" , 12 : "b", 13 : "c", 14 : "d", 15 : "
                                  34 : "n", 35 : "o", 41 : "p", 42 : "q", 43 : "r", 44 : "s", 45 : "t", 51 : "u", 52 : "v", 53 : "w", 54 : "x", 55 : "z"}; 
                                  // This is the number pair of each of the letters for this method of encryption
 
+var atBashValues = {"z":"a", "y":"b", "x":"c", "w":"d", "v":"e", "u":"f", "t":"g", "s":"h", "r":"i", "q":"j", "p":"k",
+                   "o":"l", "n":"m", "m":"n", "l":"o", "k":"p", "j":"q", "i":"r", "h":"s", "g":"t", "f":"u", "e":"v", "d":"w", "c":"x", "b":"y", "a":"z", " ":" "};
+
 function caesarDecrypt() {
 
   var textToDecrypt = [];  // Array to pass words/word to, to decrypt
@@ -69,7 +72,7 @@ function caesarDecrypt() {
 
   outputText.innerHTML = encryptedText; // Set our output test box equal to our encrypted text
   
-};
+}
 
 function polybiusDecrypt() {
 
@@ -118,4 +121,34 @@ function polybiusDecrypt() {
         }
 
     }
-};
+}
+
+function atBashDecrypt() {
+
+    var textToDecrypt = (document.querySelector("#atBashDecrypt").value).toLowerCase(); // grab input text and cast to lower case
+    var outputTextBox = document.querySelector("#atBashClear"); // grab output text box
+    var decryptedText = ""; // setup our output message
+    
+    if (!(/^[a-zA-Z\s]*$/.test(textToDecrypt))) { // Checks to see if you entered something that wasnt a letter or a space.
+
+        decryptedText = "Please only use letters.";
+
+    } else { // The else goes on with the rest of the program
+
+    for (var i =0; i < textToDecrypt.length; i++) { // Step through each letter in the input text
+        
+        
+            
+        decryptedText += atBashValues[textToDecrypt[i]];
+
+        
+        
+    }
+
+}
+
+    
+
+    outputTextBox.innerHTML = decryptedText;
+
+}
