@@ -65,12 +65,16 @@
   
         <div class="column">
           <h2>Clear Text</h2>
-          <textarea class="enterText" placeholder="Enter text"></textarea>
+          <textarea id="atBashInputText" class="enterText" placeholder="Enter text"></textarea>
         </div>
     
         <div class="column">
           <h2>Encrypted Text</h2>
-          <textarea readonly class="encryptedText" placeholder="Output text (cannot edit)"></textarea>    
+          <textarea id="atBashOutputText" readonly class="encryptedText" placeholder="Output text (cannot edit)"></textarea>    
+        </div>
+
+        <div class="buttonArea">
+          <button class="submit" onclick="atBashEncrypt()">Submit Text</button>
         </div>
         
       </div> <!--End atBash Div-->
