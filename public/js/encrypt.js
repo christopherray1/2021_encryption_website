@@ -12,82 +12,91 @@ var polybiusSquareColumnValues = {"a": 1, "b": 2, "c": 3, "d": 4, "e": 5, "f": 1
 
 function caesarEncrypt() {
 
-    var textToEncrypt = [];  // Array to pass words/word to, to encrypt
-    var inputText = document.querySelector("#caesarInputText").value;  // grab the input text
+    try {
 
-    var enteredText = String(inputText).toLowerCase(); // Convert inputText to lowercase
-    textToEncrypt = enteredText.split(" "); // split up input text by space and pass to empty array textToEncrypt
-    
-    
-    var outputText = document.querySelector("#caesarOutputText"); // Select our output text box
+        var textToEncrypt = [];  // Array to pass words/word to, to encrypt
+        var inputText = document.querySelector("#caesarInputText").value;  // grab the input text
 
-    
-
-    
-    var encryptedText = ""; // our encrypted text will go here
-    
-    textToEncrypt.forEach(word => {  // Step through our textToEncrypt array
+        var enteredText = String(inputText).toLowerCase(); // Convert inputText to lowercase
+        textToEncrypt = enteredText.split(" "); // split up input text by space and pass to empty array textToEncrypt
         
-        for (var i = 0; i < word.length; i++) {  // Step through each letter of our word in our for each loop
+        
+        var outputText = document.querySelector("#caesarOutputText"); // Select our output text box
 
-            if (Number.isInteger(parseInt(word[i]))) { // Catch user entering a number into input box
-                encryptedText = "You can not encrypt numbers with Caesar Encryption. Please Retype your phrase.";
-                break;
-            } else {
+        
 
-                for (let key of Object.keys(originalAlphabet)) { // Step through each key in our originalAlphabet associative array and compare to the current letter we are checking in the word,
-                                                                // then add the new letter to our encryptedText output message
-                    if (originalAlphabet[key] == word[i]) {
-                        if ((parseInt(key) + 3) == 26) {         // If the current key that was grabbed from the checked letter in our word is = 26, this means it is out of the scope of the array.
-                            encryptedText += originalAlphabet[0];// So we set the encrypted letter equal to the first letter of the alphabet. (x with a shift of 3 will be a)
-                        } else if ((parseInt(key) + 3) == 27) { // 27 = b
-                            encryptedText += originalAlphabet[1];
-                        } else if ((parseInt(key) + 3) == 28) { // 28 = c
-                            encryptedText += originalAlphabet[2];
-                        } else {
-                            encryptedText += originalAlphabet[(parseInt(key) + 3)]; // Every other letter, we can shift by three, since it will not be out of the array's scope
-                        }
-                        
-                    }
-                }
-
-            }
+        
+        var encryptedText = ""; // our encrypted text will go here
+        
+        textToEncrypt.forEach(word => {  // Step through our textToEncrypt array
             
-        }
-        encryptedText += " "; // add a space at the end of the word, incase there are multiple words
+            for (var i = 0; i < word.length; i++) {  // Step through each letter of our word in our for each loop
 
-    });
-    
-    outputText.innerHTML = encryptedText; // Set our output test box equal to our encrypted text
+                if (Number.isInteger(parseInt(word[i]))) { // Catch user entering a number into input box
+                    encryptedText = "You can not encrypt numbers with Caesar Encryption. Please Retype your phrase.";
+                    break;
+                } else {
+
+                    for (let key of Object.keys(originalAlphabet)) { // Step through each key in our originalAlphabet associative array and compare to the current letter we are checking in the word,
+                                                                    // then add the new letter to our encryptedText output message
+                        if (originalAlphabet[key] == word[i]) {
+                            if ((parseInt(key) + 3) == 26) {         // If the current key that was grabbed from the checked letter in our word is = 26, this means it is out of the scope of the array.
+                                encryptedText += originalAlphabet[0];// So we set the encrypted letter equal to the first letter of the alphabet. (x with a shift of 3 will be a)
+                            } else if ((parseInt(key) + 3) == 27) { // 27 = b
+                                encryptedText += originalAlphabet[1];
+                            } else if ((parseInt(key) + 3) == 28) { // 28 = c
+                                encryptedText += originalAlphabet[2];
+                            } else {
+                                encryptedText += originalAlphabet[(parseInt(key) + 3)]; // Every other letter, we can shift by three, since it will not be out of the array's scope
+                            }
+                            
+                        }
+                    }
+
+                }
+                
+            }
+            encryptedText += " "; // add a space at the end of the word, incase there are multiple words
+
+        });
+        
+        outputText.innerHTML = encryptedText; // Set our output test box equal to our encrypted text
+    } catch (err) {
+        alert(err.message);
+    }
     
 }
 
 function polybiusEncrypt() {
 
-    var textToEncrypt = String(document.querySelector("#polybiusInputText").value).toLowerCase(); // grab input text and cast to lower case
-    var outputTextBox = document.querySelector("#polybiusOutputText"); // grab output text box
-    var encryptedText = ""; // setup our output message
+    try {
+        var textToEncrypt = String(document.querySelector("#polybiusInputText").value).toLowerCase(); // grab input text and cast to lower case
+        var outputTextBox = document.querySelector("#polybiusOutputText"); // grab output text box
+        var encryptedText = ""; // setup our output message
 
-    for (var i =0; i < textToEncrypt.length; i++) { // Step through each letter in the input text
-        
-        if (checkIfLetterInArraysP(textToEncrypt[i], polybiusSquareRowValues)) { // if our function call is true, grab the row and column value of the letter and add to our output message
-            encryptedText += polybiusSquareRowValues[textToEncrypt[i]];
-            encryptedText += polybiusSquareColumnValues[textToEncrypt[i]];
-        }
-        
-    }
-
-    outputTextBox.innerHTML = encryptedText; // set our output message
-
-
-    function checkIfLetterInArraysP(letter, rowsArray) { // function to check if current letter is in our polybius square, we only check if it is in the rows, because
-                                                         // this covers all possible letters
-        if (rowsArray[letter]) { // Return true if our letter is in the polybius square
-            return true;
-        } else { // every other character, return false. Meaning y or a number or (),&,^,% etc.
-            return false;
+        for (var i =0; i < textToEncrypt.length; i++) { // Step through each letter in the input text
+            
+            if (checkIfLetterInArraysP(textToEncrypt[i], polybiusSquareRowValues)) { // if our function call is true, grab the row and column value of the letter and add to our output message
+                encryptedText += polybiusSquareRowValues[textToEncrypt[i]];
+                encryptedText += polybiusSquareColumnValues[textToEncrypt[i]];
+            }
+            
         }
 
+        outputTextBox.innerHTML = encryptedText; // set our output message
+
+
+        function checkIfLetterInArraysP(letter, rowsArray) { // function to check if current letter is in our polybius square, we only check if it is in the rows, because
+                                                            // this covers all possible letters
+            if (rowsArray[letter]) { // Return true if our letter is in the polybius square
+                return true;
+            } else { // every other character, return false. Meaning y or a number or (),&,^,% etc.
+                return false;
+            }
+
+        }
+    } catch (err) {
+        alert(err.message);
     }
 
 }
@@ -123,6 +132,7 @@ function polybiusEncrypt() {
 // }
 
 function atbashEncrypt() {
+    try {
 
     var textToEncrypt = [];  // Array to pass words/word to, to encrypt
 
@@ -169,7 +179,10 @@ function atbashEncrypt() {
     });
     
     outputText.innerHTML = encryptedText; // Set our output test box equal to our encrypted text
+    } catch {
+    alert(err.message);
 
+    }
 
 }
 

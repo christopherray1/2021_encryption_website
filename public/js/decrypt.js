@@ -24,6 +24,8 @@ var atBashValues = {"z":"a", "y":"b", "x":"c", "w":"d", "v":"e", "u":"f", "t":"g
 
 function caesarDecrypt() {
 
+try {  
+
   var textToDecrypt = [];  // Array to pass words/word to, to decrypt
   var inputText = document.querySelector("#inputCeasarDecrypt").value;  // grab the input text
 
@@ -71,11 +73,16 @@ function caesarDecrypt() {
   });  
 
   outputText.innerHTML = encryptedText; // Set our output test box equal to our encrypted text
+
+} catch(err) {
+  alert(err.message);
+}
   
 }
 
 function polybiusDecrypt() {
 
+   try {
     var textToDecrypt = (document.querySelector("#inputPolybiusDecrypt").value); // takes text from 'encrypted text' box
     var textDecryptArray = []; // Allows the input to be grouped into sets of two
     var outputTextBox = document.querySelector("#outputPolybiusDecrypt"); // targets the 'clear text' output box
@@ -121,34 +128,42 @@ function polybiusDecrypt() {
         }
 
     }
+   } catch (err) {
+    alert(err.message);
+   }
 }
 
 function atBashDecrypt() {
 
-    var textToDecrypt = (document.querySelector("#atBashDecrypt").value).toLowerCase(); // grab input text and cast to lower case
-    var outputTextBox = document.querySelector("#atBashClear"); // grab output text box
-    var decryptedText = ""; // setup our output message
-    
-    if (!(/^[a-zA-Z\s]*$/.test(textToDecrypt))) { // Checks to see if you entered something that wasnt a letter or a space.
-
-        decryptedText = "Please only use letters.";
-
-    } else { // The else goes on with the rest of the program
-
-    for (var i =0; i < textToDecrypt.length; i++) { // Step through each letter in the input text
+        try {
+            var textToDecrypt = (document.querySelector("#atBashDecrypt").value).toLowerCase(); // grab input text and cast to lower case
+        var outputTextBox = document.querySelector("#atBashClear"); // grab output text box
+        var decryptedText = ""; // setup our output message
         
-        
+        if (!(/^[a-zA-Z\s]*$/.test(textToDecrypt))) { // Checks to see if you entered something that wasnt a letter or a space.
+
+            decryptedText = "Please only use letters.";
+
+        } else { // The else goes on with the rest of the program
+
+        for (var i =0; i < textToDecrypt.length; i++) { // Step through each letter in the input text
             
-        decryptedText += atBashValues[textToDecrypt[i]];
+            
+                
+            decryptedText += atBashValues[textToDecrypt[i]];
+
+            
+            
+        }
+
+        }
 
         
-        
+
+        outputTextBox.innerHTML = decryptedText;
+    } catch {
+        alert(err.message);
+
     }
-
-}
-
-    
-
-    outputTextBox.innerHTML = decryptedText;
 
 }
