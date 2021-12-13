@@ -1,5 +1,5 @@
-var originalAlphabet = {0:"a", 1:"b", 2:"c", 3:"d", 4:"e", 5:"f", 6:"g", 7:"h", 8:"i", 9:"j", 10:"k",
-                       11:"l", 12:"m", 13:"n", 14:"o", 15:"p", 16:"q", 17:"r", 18:"s", 19:"t", 20:"u", 21:"v", 22:"w", 23:"x", 24:"y", 25:"z"};
+var originalAlphabet = {1:"a", 2:"b", 3:"c", 4:"d", 5:"e", 6:"f", 7:"g", 8:"h", 9:"i", 10:"j", 11:"k",
+                       12:"l", 13:"m", 14:"n", 15:"o", 16:"p", 17:"q", 18:"r", 19:"s", 20:"t", 21:"u", 22:"v", 23:"w", 24:"x", 25:"y", 26:"z"};
 
 var polybiusSquareRowValues = {"a": 1, "b": 1, "c": 1, "d": 1, "e": 1, "f": 2, "g": 2, "h": 2, "i": 2, "j": 2, "k": 3, "l": 3, "m": 3, "n": 3,
                               "o": 3, "p": 4, "q": 4, "r": 4, "s": 4, "t": 4, "u": 5, "v": 5, "w": 5, "x": 5, "z": 5};
@@ -12,6 +12,9 @@ var polybiusSquareColumnValues = {"a": 1, "b": 2, "c": 3, "d": 4, "e": 5, "f": 1
 
 function caesarEncrypt() {
 
+    
+    
+    
     try {
 
         var textToEncrypt = [];  // Array to pass words/word to, to encrypt
@@ -23,43 +26,46 @@ function caesarEncrypt() {
         
         var outputText = document.querySelector("#caesarOutputText"); // Select our output text box
 
-        
+        var alphabetShift = document.querySelector("#caesarShift").value; // Select our shift
 
-        
         var encryptedText = ""; // our encrypted text will go here
-        
-        textToEncrypt.forEach(word => {  // Step through our textToEncrypt array
+
+        if (parseInt(alphabetShift) < 0 || parseInt(alphabetShift) > 26) { // This is for catching the user entering negative numbers and/or numbers higher than 25
+            encryptedText = "Invalid Shift. Enter a number 0-26 to shift by";
+        } else {
             
-            for (var i = 0; i < word.length; i++) {  // Step through each letter of our word in our for each loop
-
-                if (Number.isInteger(parseInt(word[i]))) { // Catch user entering a number into input box
-                    encryptedText = "You can not encrypt numbers with Caesar Encryption. Please retype your phrase.";
-                    break;
-                } else {
-
-                    for (let key of Object.keys(originalAlphabet)) { // Step through each key in our originalAlphabet associative array and compare to the current letter we are checking in the word,
-                                                                    // then add the new letter to our encryptedText output message
-                        if (originalAlphabet[key] == word[i]) {
-                            if ((parseInt(key) + 3) == 26) {         // If the current key that was grabbed from the checked letter in our word is = 26, this means it is out of the scope of the array.
-                                encryptedText += originalAlphabet[0];// So we set the encrypted letter equal to the first letter of the alphabet. (x with a shift of 3 will be a)
-                            } else if ((parseInt(key) + 3) == 27) { // 27 = b
-                                encryptedText += originalAlphabet[1];
-                            } else if ((parseInt(key) + 3) == 28) { // 28 = c
-                                encryptedText += originalAlphabet[2];
-                            } else {
-                                encryptedText += originalAlphabet[(parseInt(key) + 3)]; // Every other letter, we can shift by three, since it will not be out of the array's scope
-                            }
-                            
-                        }
-                    }
-
-                }
+            
+            textToEncrypt.forEach(word => {  // Step through our textToEncrypt array
                 
-            }
-            encryptedText += " "; // add a space at the end of the word, incase there are multiple words
+                for (var i = 0; i < word.length; i++) {  // Step through each letter of our word in our for each loop
 
-        });
-        
+                    if (Number.isInteger(parseInt(word[i]))) { // Catch user entering a number into input box
+                        encryptedText = "You can not encrypt numbers with Caesar Encryption. Please retype your phrase.";
+                        break;
+                    } else {
+
+                        for (let key of Object.keys(originalAlphabet)) { // Step through each key in our originalAlphabet associative array and compare to the current letter we are checking in the word,
+                                                                        // then add the new letter to our encryptedText output message
+                            if (originalAlphabet[key] == word[i]) {
+                                if ((parseInt(key) + parseInt(alphabetShift)) > 26) {         // If the current key that was grabbed from the checked letter in our word is > 25, this means it is out of the scope of the array.
+                                    encryptedText += originalAlphabet[(parseInt(key) + parseInt(alphabetShift)) - 26];// So we set the encrypted letter equal to the key + the shift - 26. (x with a shift of 4 will be b)
+                                } else {
+                                    encryptedText += originalAlphabet[(parseInt(key) + parseInt(alphabetShift))]; // Every other letter, we can shift by whatever the user specified, since it will not be out of the array's scope
+                                }
+                                
+                            }
+                        }
+
+                    }
+                    
+                }
+                encryptedText += " "; // add a space at the end of the word, incase there are multiple words
+
+            });
+            
+            
+
+        }
         outputText.innerHTML = encryptedText; // Set our output test box equal to our encrypted text
     } catch (err) {
         alert(err.message);
@@ -100,6 +106,11 @@ function polybiusEncrypt() {
     }
 
 }
+
+//Chris's work on atbash encryption
+///////////////////////////////////
+///////////////////////////////////
+///////////////////////////////////
 
 // function atBashEncrypt() {
 
@@ -159,10 +170,10 @@ function atbashEncrypt() {
                 for (let key of Object.keys(originalAlphabet)) { // Step through each key in our originalAlphabet associative array and compare to the current letter we are checking in the word,
                                                                 // then add the new letter to our encryptedText output message
                     if (originalAlphabet[key] == word[i]) {
-                        if (parseInt(key) <= 12) {         // If the current key that was grabbed from the checked letter in our word is <= 12, this means it is on the first half of alphabet
-                            encryptedText += originalAlphabet[(0 - parseInt(key)) + 25]; // So we take the key value and subtract it from zero and add 25 to it to get our letter. (Ex. 0 - 3 = -3 + 25 = 22....Which would be d turns into w)
-                        } else if (parseInt(key) > 12 && parseInt(key) <= 25) { // If key is greater than 12 and less than or equal to 25 it is on the second half of the alphabet
-                            encryptedText += originalAlphabet[Math.abs(parseInt(key) - 25)]; // So we take the absolute value of the key - 25. (Ex. 21-25 = -4 absolute value is 4.... which would be v turns into e)
+                        if (parseInt(key) <= 13) {         // If the current key that was grabbed from the checked letter in our word is <= 12, this means it is on the first half of alphabet
+                            encryptedText += originalAlphabet[(0 - parseInt(key)) + 27]; // So we take the key value and subtract it from zero and add 26 to it to get our letter. (Ex. 0 - 3 = -3 + 26 = 23....Which would be c turns into x)
+                        } else if (parseInt(key) > 13 && parseInt(key) <= 26) { // If key is greater than 12 and less than or equal to 25 it is on the second half of the alphabet
+                            encryptedText += originalAlphabet[Math.abs(parseInt(key) - 27)]; // So we take the absolute value of the key - 25. (Ex. 21-25 = -4 absolute value is 4.... which would be v turns into e)
                         }
                         
                     }

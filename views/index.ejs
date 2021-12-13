@@ -32,6 +32,9 @@
         <div class="column">
           <h2>Clear Text</h2>
           <textarea onkeyup="caesarEncrypt()" id="caesarInputText" placeholder="Enter text"></textarea>
+          <br>
+          <label for="shiftInput">Enter the amount you wish to shift the alphabet by:</label>
+          <input onchange="caesarEncrypt()" type="number" name="caesarShift" id="caesarShift" value="3">
         </div>
     
         <div class="column">
