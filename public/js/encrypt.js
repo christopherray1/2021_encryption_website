@@ -33,7 +33,7 @@ function caesarEncrypt() {
             for (var i = 0; i < word.length; i++) {  // Step through each letter of our word in our for each loop
 
                 if (Number.isInteger(parseInt(word[i]))) { // Catch user entering a number into input box
-                    encryptedText = "You can not encrypt numbers with Caesar Encryption. Please Retype your phrase.";
+                    encryptedText = "You can not encrypt numbers with Caesar Encryption. Please retype your phrase.";
                     break;
                 } else {
 
@@ -152,7 +152,7 @@ function atbashEncrypt() {
         for (var i = 0; i < word.length; i++) {  // Step through each letter of our word in our for each loop
 
             if (Number.isInteger(parseInt(word[i]))) { // Catch user entering a number into input box
-                encryptedText = "You can not encrypt numbers with Atbash Encryption. Please Retype your phrase.";
+                encryptedText = "You can not encrypt numbers with Atbash Encryption. Please retype your phrase.";
                 break;
             } else if ((/[a-z]/).test(word[i])) {  // check if current char of the word(s) is a letter
 
