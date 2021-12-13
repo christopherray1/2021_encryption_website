@@ -1,0 +1,119 @@
+/**********************************************************/
+/**************** Media Query For Desktop *****************/
+/**********************************************************/
+h1 {
+  color: white;
+  text-align: center;
+
+}
+
+#imgLock {
+  width: 50px;
+}
+
+body {
+  background: #222;
+  color: #ccc;
+}
+
+.caesarNav > h2:hover {
+  color: white;
+}
+
+.polybiusNav > h2:hover {
+  color: white;
+}
+
+.atbashNav > h2:hover {
+  color: white;
+}
+
+.info {
+  width: 75%;
+}
+
+/*********************************************************/
+/******************* Navigation Setup ********************/
+/*********************************************************/
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+  border-right: 1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04aa6d;
+}
+
+/*********************************************************/
+/**************** Media Query For Tablet *****************/
+/*********************************************************/
+@media only screen and (max-width: 64em) {
+
+
+}
+
+/**********************************************************/
+/************** Media Query For Smartphones ***************/
+/**********************************************************/
+@media only screen and (max-width: 37.5em) {
+  #wrapper {
+    padding-left: 30px;
+
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+
+  /*********************************************************/
+  /******************* Navigation Setup ********************/
+  /*********************************************************/
+  ul {
+    width: 397px;
+    background-color: #333;
+    border: 1px solid #bbb;
+  }
+
+  li {
+    float: none;
+    text-align: center;
+    border-right: none;
+    border-bottom: 1px solid #bbb;
+  }
+
+  li:last-child {
+    border-bottom: none;
+  }
+
+  .info {
+    text-align: center;
+    width: auto;
+    
+  }
+
+}

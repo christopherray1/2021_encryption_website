@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Information page about the ciphers used</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/infoStyles.css">
 </head>
 
 <body>
@@ -20,30 +20,49 @@
       <li><a class="active" href="/info">About Ciphers</a></li>
     </ul>
 
-    <div class="ciphers">
+    <div class="caesarNav">
+
       <h2>The Ceasar Cipher</h2>
-      <p>The Caesar Cipher is a monoalphabetic rotation cipher used by Gaius Julius Caesar. Caesar rotated each letter
-        of the plaintext forward three times to encrypt, so that A became D, B became E, etc. For example a message that
-        says “ATTACK AT DAWN” encrypts to “DWWDFN DW GDZQ” using the Caesar Cipher.</p>
+      
+
+      <div class="info">
+
+        
+        <blockquote>The Caesar Cipher is a monoalphabetic rotation cipher used by Gaius Julius Caesar.
+          The cipher can be used to "rotate" the alphabet left or right some number of positions. If we were to rotate each letter
+          of the alphabet to the right by three to encrypt text then A would became D, B become E, etc. For example a message that
+          says “ATTACK AT DAWN” encrypts to “DWWDFN DW GDZQ” using the Caesar Cipher.</blockquote>
+      </div>
+      
     </div>
 
-    <div class="ciphers">
+    <div class="polybiusNav">
       <h2>The Polybius Cipher</h2>
-      <p>The Polybius square, also known as the Polybius checkerboard, is a device invented by the ancient Greeks
-        Cleoxenus and Democleitus, and made famous by the historian and scholar Polybius. The device is used for
-        transposing plaintext characters so that they can be represented by a smaller set of symbols, which is useful
-        for telegraphy, steganography, and cryptography.</p>
+
+      <div class="info">
+        <blockquote>The Polybius square, also known as the Polybius checkerboard, is a device invented by the ancient Greeks
+          Cleoxenus and Democleitus, and made famous by the historian and scholar Polybius. The device is used for
+          transposing plaintext characters so that they can be represented by a smaller set of symbols, which is useful
+          for telegraphy, steganography, and cryptography.</blockquote>
+      </div>
+      
     </div>
 
-    <div class="ciphers">
+    <div class="atbashNav">
       <h2>The Atbash Cipher</h2>
 
-      <p>The Atbash cipher is a substitution cipher with a specific key where the letters of the alphabet are reversed.
-        I.e. all 'A's are replaced with 'Z's, all 'B's are replaced with 'Y's, and so on. It was originally used for the
-        Hebrew alphabet, but can be used for any alphabet.</p>
+      <div class="info">
+        <blockquote>The Atbash cipher is a substitution cipher with a specific key where the letters of the alphabet are reversed.
+          I.e. all 'A's are replaced with 'Z's, all 'B's are replaced with 'Y's, and so on. It was originally used for the
+          Hebrew alphabet, but can be used for any alphabet.</blockquote>
+
+      </div>
+      
     </div>
 
-  </div>
+  </div> <!--End infoWrapper Div-->
+  <script src="js/jquery-3.6.0.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/slidePanes.js"></script>
 </body>
-
 </html>
