@@ -20,16 +20,6 @@ $(function() {
       $(this).stop().effect( "bounce", {times:8}, 500 );
     };
 
-
-    console.log('Count', $count);
-    
-    
-
-
   });
-
-
-
-  
 
 });
