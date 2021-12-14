@@ -9,7 +9,7 @@ var polybiusSquareColumnValues = {"a": 1, "b": 2, "c": 3, "d": 4, "e": 5, "f": 1
 
 // var atBashValues = {"z":"a", "y":"b", "x":"c", "w":"d", "v":"e", "u":"f", "t":"g", "s":"h", "r":"i", "q":"j", "p":"k",
 //                        "o":"l", "n":"m", "m":"n", "l":"o", "k":"p", "j":"q", "i":"r", "h":"s", "g":"t", "f":"u", "e":"v", "d":"w", "c":"x", "b":"y", "a":"z", " ":" "};
-var alphabetStringSpan = "defghijklmnopqrstuvwxyzabc";
+var alphabetStringSpan = "defghijklmnopqrstuvwxyzabc"; // alphabet shifted by 3
 
 function caesarEncrypt() {
 
@@ -47,7 +47,7 @@ function caesarEncrypt() {
                     if (Number.isInteger(parseInt(word[i]))) { // Catch user entering a number into input box
                         encryptedText = "You can not encrypt numbers with Caesar Encryption. Please retype your phrase.";
                         break;
-                    } else {
+                    } else if ((/[a-z]/).test(word[i])) {
 
                         if (!isShifted) { // to check if the alphabet has been shifted/displayed for user
 
@@ -62,7 +62,7 @@ function caesarEncrypt() {
 
                             }
                             isShifted = true;
-                            if (!newAlphabetString == "") {
+                            if (!newAlphabetString == "") { // if the textbox was not empty, we will change the shifted alphabet
                                 alphabetStringSpan = newAlphabetString;
                             }
                         }
@@ -79,6 +79,10 @@ function caesarEncrypt() {
                             }
                         }
 
+                    } else {
+                        // Catch any other type of symbol or character that is not a letter.
+                        encryptedText = "You may only enter letters from the alphabet to encrypt.";
+                        break;
                     }
                     
                 }
@@ -102,19 +106,36 @@ function caesarEncrypt() {
 function polybiusEncrypt() {
 
     try {
-        var textToEncrypt = String(document.querySelector("#polybiusInputText").value).toLowerCase(); // grab input text and cast to lower case
+        var textToEncrypt = [];  // Array to pass words/word to, to encrypt
+        var enteredText = String(document.querySelector("#polybiusInputText").value).toLowerCase(); // grab input text and cast to lower case
+        textToEncrypt = enteredText.split(" ");
         var outputTextBox = document.querySelector("#polybiusOutputText"); // grab output text box
         var encryptedText = ""; // setup our output message
 
-        for (var i =0; i < textToEncrypt.length; i++) { // Step through each letter in the input text
-            
-            if (checkIfLetterInArraysP(textToEncrypt[i], polybiusSquareRowValues)) { // if our function call is true, grab the row and column value of the letter and add to our output message
-                encryptedText += polybiusSquareRowValues[textToEncrypt[i]];
-                encryptedText += polybiusSquareColumnValues[textToEncrypt[i]];
-            }
-            
-        }
+        textToEncrypt.forEach(word => {  // Step through our textToEncrypt array
 
+            for (var i =0; i < word.length; i++) { // Step through each letter in the input text
+
+                if (Number.isInteger(parseInt(word[i]))) { // Catch user entering a number into input box
+                    encryptedText = "You can not encrypt numbers with Polibius Encryption. Please retype your phrase.";
+                    break;
+                } else if ((/[a-z]/).test(word[i]) && word[i] != "y") {
+                    if (checkIfLetterInArraysP(word[i], polybiusSquareRowValues)) { // if our function call is true, grab the row and column value of the letter and add to our output message
+                        encryptedText += polybiusSquareRowValues[word[i]];
+                        encryptedText += polybiusSquareColumnValues[word[i]];
+                    }
+                } else {
+                    // Catch any other type of symbol or character that is not a letter or is y.
+                    encryptedText = "You may only enter letters from the alphabet to encrypt, except the letter y.";
+                    console.log("hi");
+                    break;
+                }
+                
+                
+            }
+            encryptedText += " ";
+
+        });
         outputTextBox.innerHTML = encryptedText; // set our output message
 
 
