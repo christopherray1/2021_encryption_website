@@ -22,18 +22,31 @@ var polybiusSquareReverseKey = { 11 : "a" , 12 : "b", 13 : "c", 14 : "d", 15 : "
 var atBashValues = {"z":"a", "y":"b", "x":"c", "w":"d", "v":"e", "u":"f", "t":"g", "s":"h", "r":"i", "q":"j", "p":"k",
                    "o":"l", "n":"m", "m":"n", "l":"o", "k":"p", "j":"q", "i":"r", "h":"s", "g":"t", "f":"u", "e":"v", "d":"w", "c":"x", "b":"y", "a":"z", " ":" "};
 
+var pastDecryption = [];
+
+var timesRun = 0;
+
+var textToDecryptCR = document.querySelector("#inputCeasarDecrypt").value;
+var outputTextBoxCR = document.querySelector("#outputCeasarDecrypt"); // Select our output text box
+
+var textToDecryptPB = (document.querySelector("#inputPolybiusDecrypt").value); // takes text from 'encrypted text' box
+var outputTextBoxPB = document.querySelector("#outputPolybiusDecrypt"); // targets the 'clear text' output box
+
+var textToDecryptAB = (document.querySelector("#atBashDecrypt").value).toLowerCase(); // grab input text and cast to lower case
+var outputTextBoxAB = document.querySelector("#atBashClear"); // grab output text box
+
 function caesarDecrypt() {
 
 try {  
 
   var textToDecrypt = [];  // Array to pass words/word to, to decrypt
-  var inputText = document.querySelector("#inputCeasarDecrypt").value;  // grab the input text
+  var textToDecryptCR = document.querySelector("#inputCeasarDecrypt").value;  // grab the input text
 
-  var enteredText = String(inputText).toLowerCase(); // Convert inputText to lowercase
+  var enteredText = String(textToDecryptCR).toLowerCase(); // Convert inputText to lowercase
   textToDecrypt = enteredText.split(" "); // split up input text by space and pass to empty array textToDecrypt
   
   
-  var outputText = document.querySelector("#outputCeasarDecrypt"); // Select our output text box
+  var outputTextBoxCR = document.querySelector("#outputCeasarDecrypt"); // Select our output text box
 
   
 
@@ -65,6 +78,8 @@ try {
                   }
               }
 
+              pastDecryption.push("Ceaser - " + textToDecrypt + " to " + encryptedText);
+
           }
           
       }
@@ -72,7 +87,7 @@ try {
 
   });  
 
-  outputText.innerHTML = encryptedText; // Set our output test box equal to our encrypted text
+  outputTextBoxCR.innerHTML = encryptedText; // Set our output test box equal to our encrypted text
 
 } catch(err) {
   alert(err.message);
@@ -83,12 +98,12 @@ try {
 function polybiusDecrypt() {
 
    try {
-    var textToDecrypt = (document.querySelector("#inputPolybiusDecrypt").value); // takes text from 'encrypted text' box
+    var textToDecryptPB = (document.querySelector("#inputPolybiusDecrypt").value); // takes text from 'encrypted text' box
     var textDecryptArray = []; // Allows the input to be grouped into sets of two
-    var outputTextBox = document.querySelector("#outputPolybiusDecrypt"); // targets the 'clear text' output box
+    var outputTextBoxPB = document.querySelector("#outputPolybiusDecrypt"); // targets the 'clear text' output box
     var decryptedText = ""; // setup our output message
 
-    if (/^[a-zA-Z]+$/.test(textToDecrypt)) { // Checks to see if you typed anything that was a letter 
+    if (/^[a-zA-Z]+$/.test(textToDecryptPB)) { // Checks to see if you typed anything that was a letter 
 
         decryptedText = "Please only use number pairs that coorilate with a letter. (No letters, or non numeric charecters)";
 
@@ -96,9 +111,9 @@ function polybiusDecrypt() {
 
     
 
-    for (var i = 0; i<textToDecrypt.length-1; i+=2) { // Takes the input text and puts it in groups of two, allowing us to match those number pairings with the above key array
+    for (var i = 0; i<textToDecryptPB.length-1; i+=2) { // Takes the input text and puts it in groups of two, allowing us to match those number pairings with the above key array
 
-        textDecryptArray.push((textToDecrypt[i]+''+textToDecrypt[i+1]));
+        textDecryptArray.push((textToDecryptPB[i]+''+textToDecryptPB[i+1]));
 
        }
 
@@ -112,11 +127,16 @@ function polybiusDecrypt() {
 
         decryptedText = "Please only use number pairs that coorilate with a letter. (No letters, or non numeric charecters)";
 
+    } else {
+
+        pastDecryption.push("Polybius - " + textToDecryptPB + " to " + decryptedText);
+
+
     }
 
          
 
-    outputTextBox.innerHTML = decryptedText; // set our output message
+    outputTextBoxPB.innerHTML = decryptedText; // set our output message
 
 
     function checkIfLetterInArraysP(letter, rowsArray) { // function to check if current letter is in our polybius square, we only check if it is in the rows, because
@@ -136,34 +156,82 @@ function polybiusDecrypt() {
 function atBashDecrypt() {
 
         try {
-            var textToDecrypt = (document.querySelector("#atBashDecrypt").value).toLowerCase(); // grab input text and cast to lower case
-        var outputTextBox = document.querySelector("#atBashClear"); // grab output text box
-        var decryptedText = ""; // setup our output message
-        
-        if (!(/^[a-zA-Z\s]*$/.test(textToDecrypt))) { // Checks to see if you entered something that wasnt a letter or a space.
 
-            decryptedText = "Please only use letters.";
+        
+        var decryptedTextAB = ""; // setup our output message
+        
+        if (!(/^[a-zA-Z\s]*$/.test(textToDecryptAB))) { // Checks to see if you entered something that wasnt a letter or a space.
+
+            decryptedTextAB = "Please only use letters.";
 
         } else { // The else goes on with the rest of the program
 
-        for (var i =0; i < textToDecrypt.length; i++) { // Step through each letter in the input text
+        for (var i =0; i < textToDecryptAB.length; i++) { // Step through each letter in the input text
             
             
                 
-            decryptedText += atBashValues[textToDecrypt[i]];
+            decryptedTextAB += atBashValues[textToDecryptAB[i]];
 
             
             
         }
+
+        pastDecryption.push("Atbash - " + textToDecryptAB + " to " + decryptedTextAB);
 
         }
 
         
 
-        outputTextBox.innerHTML = decryptedText;
+        outputTextBoxAB.innerHTML = decryptedTextAB;
     } catch {
         alert(err.message);
 
     }
+
+}
+
+// function submitDecrpyt() {
+
+//     pastDecryption.push("Atbash - " + textToDecryptAB + " to " + decryptedTextAB);
+
+//     pastDecryption.push("Polybius - " + textToDecryptPB + " to " + decryptedText);
+
+//     pastDecryption.push("Ceaser - " + textToDecrypt + " to " + encryptedText);
+
+// }
+
+function pastDecryptions() {
+
+    var pastDecryptOutput = document.querySelector("#pastDecryptOutput"); // Grabs the output area of the list
+
+    if (timesRun >= 1) { // function to erase previous list after button is clicked, used more than once because there should be no list the first time
+
+        pastDecryptOutput.innerHTML = ""; // sets output back to nothing
+        
+    } else {
+
+
+    }
+
+    var extraLength = pastDecryption.length - 10; // finds how many extra numbers there might be as the list caps at the past 10
+
+    // console.log(extraLength + " " + pastDecryption.length); 
+
+    if (pastDecryption.length >= 9) { // Finds out if 1. The length of the array with the past results is above 10, then 2. sets it to 10
+
+        pastDecryption.splice(0, extraLength); // takes only the last 10
+
+    }
+
+        for (i = 0; i < pastDecryption.length && i <= 9; i++){ // Sets/Displays the output
+
+            pastDecryptOutput.innerHTML += (i+1) + ": " + pastDecryption[i] + "<br>";
+    
+        }
+    
+    
+
+    timesRun+=1; // incraments the times run var for the first if statement on line 165
+
 
 }
