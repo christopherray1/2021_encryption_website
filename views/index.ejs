@@ -33,13 +33,22 @@
           <h2>Clear Text</h2>
           <textarea onkeyup="caesarEncrypt()" id="caesarInputText" placeholder="Enter text"></textarea>
           <br>
+          <br>
           <label for="shiftInput">Enter the amount you wish to shift the alphabet by:</label>
           <input onchange="caesarEncrypt()" type="number" name="caesarShift" id="caesarShift" value="3">
+          <h4>Original Alphabet</h4>
+          <span class="spans">abcdefghijklmnopqrstuvwxyz</span>
+          
+          
         </div>
     
-        <div class="column">
+        <div class="column" id="caesarEncryptionFix">
           <h2>Encrypted Text</h2>
-          <textarea id="caesarOutputText" readonly class="encryptedText" placeholder="hqwhu whaw"></textarea>    
+          <textarea id="caesarOutputText" readonly class="encryptedText" placeholder="hqwhu whaw"></textarea>   
+          <h4>Shifted Alphabet</h4>
+          <span class="spans" id="shiftedAlphabet">defghijklmnopqrstuvwxyzabc</span>
+          <br>
+           
         </div>
         
       </div> <!--End Caesar Div-->

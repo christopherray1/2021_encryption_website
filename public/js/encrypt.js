@@ -9,6 +9,7 @@ var polybiusSquareColumnValues = {"a": 1, "b": 2, "c": 3, "d": 4, "e": 5, "f": 1
 
 // var atBashValues = {"z":"a", "y":"b", "x":"c", "w":"d", "v":"e", "u":"f", "t":"g", "s":"h", "r":"i", "q":"j", "p":"k",
 //                        "o":"l", "n":"m", "m":"n", "l":"o", "k":"p", "j":"q", "i":"r", "h":"s", "g":"t", "f":"u", "e":"v", "d":"w", "c":"x", "b":"y", "a":"z", " ":" "};
+var alphabetStringSpan = "defghijklmnopqrstuvwxyzabc";
 
 function caesarEncrypt() {
 
@@ -29,8 +30,12 @@ function caesarEncrypt() {
         var alphabetShift = document.querySelector("#caesarShift").value; // Select our shift
 
         var encryptedText = ""; // our encrypted text will go here
+        
+        var newAlphabetString = "";
+        var isShifted = false;
+        var shiftedAlphaSpan = document.querySelector("#shiftedAlphabet");
 
-        if (parseInt(alphabetShift) < 0 || parseInt(alphabetShift) > 26) { // This is for catching the user entering negative numbers and/or numbers higher than 25
+        if (parseInt(alphabetShift) < 0 || parseInt(alphabetShift) > 26) { // This is for catching the user entering negative numbers and/or numbers higher than 26
             encryptedText = "Invalid Shift. Enter a number 0-26 to shift by";
         } else {
             
@@ -44,10 +49,28 @@ function caesarEncrypt() {
                         break;
                     } else {
 
+                        if (!isShifted) { // to check if the alphabet has been shifted/displayed for user
+
+                            for (let key of Object.keys(originalAlphabet)) {
+                                
+
+                                if ((parseInt(key) + parseInt(alphabetShift)) > 26) {         
+                                    newAlphabetString += originalAlphabet[(parseInt(key) + parseInt(alphabetShift)) - 26];
+                                } else {
+                                    newAlphabetString += originalAlphabet[(parseInt(key) + parseInt(alphabetShift))]; 
+                                }
+
+                            }
+                            isShifted = true;
+                            if (!newAlphabetString == "") {
+                                alphabetStringSpan = newAlphabetString;
+                            }
+                        }
+
                         for (let key of Object.keys(originalAlphabet)) { // Step through each key in our originalAlphabet associative array and compare to the current letter we are checking in the word,
                                                                         // then add the new letter to our encryptedText output message
                             if (originalAlphabet[key] == word[i]) {
-                                if ((parseInt(key) + parseInt(alphabetShift)) > 26) {         // If the current key that was grabbed from the checked letter in our word is > 25, this means it is out of the scope of the array.
+                                if ((parseInt(key) + parseInt(alphabetShift)) > 26) {         // If the current key that was grabbed from the checked letter in our word is > 26, this means it is out of the scope of the array.
                                     encryptedText += originalAlphabet[(parseInt(key) + parseInt(alphabetShift)) - 26];// So we set the encrypted letter equal to the key + the shift - 26. (x with a shift of 4 will be b)
                                 } else {
                                     encryptedText += originalAlphabet[(parseInt(key) + parseInt(alphabetShift))]; // Every other letter, we can shift by whatever the user specified, since it will not be out of the array's scope
@@ -67,6 +90,9 @@ function caesarEncrypt() {
 
         }
         outputText.innerHTML = encryptedText; // Set our output test box equal to our encrypted text
+        shiftedAlphaSpan.innerHTML = alphabetStringSpan;
+        
+        
     } catch (err) {
         alert(err.message);
     }
